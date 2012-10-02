@@ -2,9 +2,17 @@ extends ../layout.html
 
 block content
 
-	h2 Index
+	h2 Entities
+
+	a(href='/entities/new') New
+
+	h3 index:
 	ul
 	each entity in entities
 		li
 			a(href='/entities/'+entity._id) #{entity.name}
+			| #{' '}
+			|[
+			a(href='/entities/'+entity.id+'/edit') edit
+			|]
 			|: #{entity.description}
