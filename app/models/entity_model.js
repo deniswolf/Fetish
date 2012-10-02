@@ -2,7 +2,7 @@ var db = require('../../db');
 
 var EntitySchema = new db.mongoose.Schema({
 	name: String,
-	owners: [ObjectId],
+	owners: [db.mongoose.Schema.Types.ObjectId],
 	description: String
 });
 
