@@ -64,12 +64,21 @@ C.update = function(){
 	}
 };
 
-C.delete = function(){
-	return;
-};
+C.destroy = function(){
+	var self = this;
+	var id = self.param('id');
+	if (id){
+		Entity.findByIdAndRemove(
+			id,
+			function(err){
+				if (err) return handleError(err);
+				self.redirect('/entities/');
+			}
+			);
 
-C.destoy = function(){
-	return;
+	} else {
+		self.redirect('/entities/');
+	}
 };
 
 C.show = function(){

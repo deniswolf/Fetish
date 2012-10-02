@@ -2,17 +2,26 @@ extends ../layout.html
 
 block content
 
-	h2 Entities
-
 	a(href='/entities/new') New
 
-	h3 index:
+	h3
+		|List of entities in the system:
 	ul
 	each entity in entities
 		li
 			a(href='/entities/'+entity._id) #{entity.name}
 			| #{' '}
+
 			|[
 			a(href='/entities/'+entity.id+'/edit') edit
 			|]
+
+			|[
+			form(method='post',
+				action='/entities/'+entity.id,
+				class='button_to')
+				input(type="hidden", name="_method", value="delete")
+				input(type='submit', value='delete')
+			|]
+
 			|: #{entity.description}
