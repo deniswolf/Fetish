@@ -15,7 +15,7 @@ C.index = function(){
 };
 
 C.new = function(){
-  this.render();
+	this.render();
 };
 
 C.create = function(){
@@ -33,7 +33,7 @@ C.create = function(){
 };
 
 C.edit = function(){
-  this.render();
+	this.render();
 };
 
 C.update = function(){
@@ -49,7 +49,18 @@ C.destoy = function(){
 };
 
 C.show = function(){
-  this.render();
+	var self = this;
+	if (self.param('id')){
+		Entity.findById(
+			self.param('id'),
+			function(err, data){
+				if (err) return handleError(err);
+				self.entity = data;
+				self.render();
+			});
+	} else {
+		self.render('index');
+	}
 };
 
 
