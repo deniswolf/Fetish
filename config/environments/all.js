@@ -39,5 +39,6 @@ module.exports = function() {
   this.use(express.favicon());
   this.use(express.static(__dirname + '/../../public'));
   this.use(express.bodyParser());
+  this.use(express.methodOverride());
   this.use(this.router);
 }
