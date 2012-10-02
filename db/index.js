@@ -3,10 +3,8 @@ var	mongoose = require('mongoose'),
 	connection = mongoose.createConnection(config.host, config.database);
 
 
-module.exports = function initializeDataBase () {
-
-	return {
-		connection: connection,
-		type: 'mongoose'
-	};
-};
+module.exports = {
+					connection: connection,
+					type: 'mongoose',
+					mongoose: mongoose
+				};
