@@ -2,6 +2,9 @@ extends ../layout.html
 
 block content
 
-    h2 Index
-    p
-      a(href='http://locomotivejs.org/') locomotivejs.org
+	h2 Index
+	ul
+	each entity in entities
+		li
+			a(href='/entities/'+entity._id) #{entity.name}
+			|: #{entity.description}
