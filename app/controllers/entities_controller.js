@@ -37,8 +37,6 @@ C.edit = function(){
 		Entity.findById(
 			self.param('id'),
 			function(err, data){
-	console.log('\n\n\n\n\n\nSIC EDIT!:',
-		data);
 				if (err) return handleError(err);
 				self.entity = data;
 				self.render();
@@ -52,7 +50,6 @@ C.update = function(){
 	var self = this;
 	var id = self.param('id');
 	if (id){
-		console.log('\n\n\ndata to update:\n', self.param('entity'));
 		Entity.findByIdAndUpdate(
 			id,
 			self.param('entity'),
@@ -92,8 +89,6 @@ C.show = function(){
 			function(err, data){
 				if (err) return handleError(err);
 				self.entity = data;
-	console.log('\n\n\n\n\n\nSIC!:',
-		data);
 				self.render();
 			});
 	} else {
