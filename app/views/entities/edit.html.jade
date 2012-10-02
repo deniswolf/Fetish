@@ -1,3 +1,10 @@
 extends ../layout.html
 
+h2 Edit
+
 block content
+
+	form(method='post', action='/entities/#{entity._id}')
+		input(type="hidden", name="_method", value="put")
+
+		include _form

@@ -9,7 +9,6 @@ C.index = function(){
 	Entity.find(function(err, data){
 		if (err) self.render();
 		self.entities = data;
-		console.log('123123123123123',data);
 		self.render();
 	});
 };
@@ -33,11 +32,36 @@ C.create = function(){
 };
 
 C.edit = function(){
-	this.render();
+	var self = this;
+	if (self.param('id')){
+		Entity.findById(
+			self.param('id'),
+			function(err, data){
+				if (err) return handleError(err);
+				self.entity = data;
+				self.render();
+			});
+	} else {
+		self.render('index');
+	}
 };
 
 C.update = function(){
-	return;
+	var self = this;
+	var id = self.param('id');
+	if (id){
+		Entity.findOneAndUpdate(
+			{_id:id},
+			self.param('entity'),
+			function(err){
+				if (err) return handleError(err);
+				self.redirect('/entities/'+id);
+			}
+			);
+
+	} else {
+		self.render('index')
+	}
 };
 
 C.delete = function(){
