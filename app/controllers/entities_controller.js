@@ -50,8 +50,8 @@ C.update = function(){
 	var self = this;
 	var id = self.param('id');
 	if (id){
-		Entity.findOneAndUpdate(
-			{_id:id},
+		Entity.findByIdAndUpdate(
+			id,
 			self.param('entity'),
 			function(err){
 				if (err) return handleError(err);
