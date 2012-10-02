@@ -4,9 +4,4 @@ block content
 
 	h2 New Entity
 	form(method='post', action='/entities')
-		p
-			label Name
-			input(name='entity[name]')
-		p
-			label Description
-			textarea(name='entity[description]')
+		include _form

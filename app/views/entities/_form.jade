@@ -1,0 +1,17 @@
+if typeof(entity) !== 'undefined'
+	p
+		label Name
+		input(name='entity[name]', value='#{entity.name}')
+	p
+		label Description
+		textarea(name='entity[description]')
+			|#{entity.description}
+else
+	p
+		label Name
+		input(name='entity[name]')
+	p
+		label Description
+		textarea(name='entity[description]')
+
+input(type="submit", value="Save")
