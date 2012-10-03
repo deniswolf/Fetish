@@ -14,39 +14,3 @@ p
 div.comments.container(data-action="/entities/#{entity.id}/comments/")
 
 script
-	$('.comments.container').on('update',function(event){
-		event.stopPropagation();
-		var $comments = $(this),
-			action = $comments.attr('data-action');
-
-		$.ajax({
-			url: action,
-			dataType: 'html',
-			}).success(function(data){
-				$comments.html(data);
-			});
-	});
-
-	$('.comments.container').trigger('update');
-
-	function postFormUpdateContainer(){
-		event.preventDefault();
-
-		var $form = $(this),
-			$container = $form.closest('.container'),
-			postData = $form.serialize(),
-			postUrl = $form.attr('action');
-
-		$.post(postUrl, postData).success(function(){
-			$container.trigger('update');
-		});
-	}
-
-	$('body').on('submit','.comments-form',postFormUpdateContainer);
-
-	$('body').on('submit','form.button_to.delete',postFormUpdateContainer);
-
-	$('body').on('submit','form.select_to',postFormUpdateContainer);
-	$('body').on('change','.select_to select',function(){
-		$(this).closest('form').submit();
-	});
