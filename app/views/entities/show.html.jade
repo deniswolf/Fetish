@@ -7,12 +7,19 @@ block content
 		|#{entity.description}
 	p
 		label Status:
-		|#{entity.status}
+		form(method='post',
+				action='/entities/'+entity.id,
+				class='select_to')
 
-	div.comments-container
+			select(name="entity[status]", data-selected="#{entity.status}")
+				option(value="red") Red: Alarm! Don't get close!!1
+				option(value="yellow") Yellow: Warning! Ask before touch!
+				option(value="green") Green: Everything is fine
+
+	div.comments.container
 
 	script
-		$('.comments-container').on('update',function(){
+		$('.comments.container').on('update',function(){
 			$comments = $(this);
 
 			$.ajax({
@@ -23,13 +30,13 @@ block content
 				});
 		});
 
-		$('.comments-container').trigger('update');
+		$('.comments.container').trigger('update');
 
 		function postFormUpdateContainer(){
 			event.preventDefault();
 
 			var $form = $(this),
-				$container = $form.closest('.comments-container'),
+				$container = $form.closest('.container'),
 				postData = $form.serialize(),
 				postUrl = $form.attr('action');
 
@@ -41,5 +48,4 @@ block content
 		$('body').on('submit','.comments-form',postFormUpdateContainer);
 
 		$('body').on('submit','.button_to.delete',postFormUpdateContainer);
-
 
