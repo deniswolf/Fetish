@@ -1,11 +1,9 @@
 h3 #{entity.name}
 	| #{' '}
 	a(href='/entities/'+entity.id+'/edit') edit
-p
-	label Description:
+p.description
 	|#{entity.description}
-p
-	label Status:
+p.statuses
 	form(method='post',
 			action='/entities/'+entity.id,
 			class='select_to')
