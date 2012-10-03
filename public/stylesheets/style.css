@@ -1,3 +1,8 @@
 .button_to {
 	display: inline-block;
 }
+
+.comments-body {
+	max-height: 150px;
+	overflow-y: scroll;
+}
