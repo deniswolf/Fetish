@@ -1,5 +1,3 @@
 form(class='comments-form', method='post', action='/entities/#{entity_id}/comments/')
-	p
-		textarea(name='comment[text]')
-	p
-		input.btn(type="submit", value="Add")
+	textarea.span10(name='comment[text]', rows=1, placeholder="comment")
+	input.btn.span2(type="submit", value="+")
