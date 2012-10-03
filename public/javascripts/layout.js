@@ -1,14 +1,6 @@
 (function($){
 $(document).ready(function(){
 
-	//fix to select selected element w/o complex render playarounds
-	(function fixForSelectors(){
-		var $select = $('form select');
-		var selected_option = $select.attr('data-selected');
-		$select.val(selected_option);
-	})();
-
-
 	//ajax get/post sugar for Enitites and their Comments
 
 	function getUpdateContainer(){
@@ -38,7 +30,6 @@ $(document).ready(function(){
 			$container = $form.closest('.container'),
 			postData = $form.serialize(),
 			postUrl = $form.attr('action');
-
 		$.post(postUrl, postData).success(function(data){
 			$container.trigger('update');
 		});
@@ -55,8 +46,6 @@ $(document).ready(function(){
 
 	//init views in Entity
 	$('.entity.container').trigger('update');
-
-
 
 
 });

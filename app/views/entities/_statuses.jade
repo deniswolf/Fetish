@@ -1,4 +1,4 @@
 select(name="entity[status]", data-selected="#{entity.status}")
-	option(value="green") green: everything is fine
-	option(value="yellow") yellow: warning! ask before touch!
-	option(value="red") red: alarm! don't get close!!1
+	option(value="green",	selected=entity.status === 'green') green: everything is fine
+	option(value="yellow",	selected=entity.status === 'yellow') yellow: warning! ask before touch!
+	option(value="red",		selected=entity.status === 'red') red: alarm! don't get close!!1
