@@ -27,7 +27,7 @@ C.create = function(){
 			entity,
 			function(err){
 				if (err) return handleError(err);
-				self.redirect('/entities');
+				self.redirect('/');
 			});
 	} else {
 		self.render('new');
@@ -47,7 +47,7 @@ C.edit = function(){
 				self.render();
 			});
 	} else {
-		self.render('index');
+		self.redirect('/');
 	}
 };
 
@@ -62,12 +62,12 @@ C.update = function(){
 			entity,
 			function(err){
 				if (err) return handleError(err);
-				self.redirect('/entities/'+id);
+				self.redirect('/');
 			}
 			);
 
 	} else {
-		self.render('index');
+		self.redirect('/');
 	}
 };
 
@@ -80,12 +80,12 @@ C.destroy = function(){
 			id,
 			function(err){
 				if (err) return handleError(err);
-				self.redirect('/entities/');
+				self.redirect('/');
 			}
 			);
 
 	} else {
-		self.redirect('/entities/');
+		self.redirect('/');
 	}
 };
 
@@ -102,7 +102,7 @@ C.show = function(){
 				self.render();
 			});
 	} else {
-		self.render('index');
+		self.render();
 	}
 };
 
