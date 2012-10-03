@@ -8,3 +8,14 @@ block content
 	p
 		label Status:
 		|#{entity.status}
+
+	div#comments
+
+	script
+		$('#comments').on('update',function(){
+			$.pjax({
+				url: location.href.match(/\/entities\/[\w]+/)[0]+'/comments/',
+				container: '#comments'
+				});
+			});
+		$('#comments').trigger('update');
