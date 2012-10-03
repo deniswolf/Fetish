@@ -1,7 +1,7 @@
 if typeof(entity) !== 'undefined'
 	p
 		label Name
-		input(name='entity[name]', value='#{entity.name}')
+		input(name='entity[name]', value='#{entity.name}', type="text")
 	p
 		label Description
 		textarea(name='entity[description]')
@@ -9,9 +9,9 @@ if typeof(entity) !== 'undefined'
 else
 	p
 		label Name
-		input(name='entity[name]')
+		input(name='entity[name]', type="text")
 	p
 		label Description
 		textarea(name='entity[description]')
 
-input(type="submit", value="Save")
+input.btn(type="submit", value="Save")
