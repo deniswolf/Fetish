@@ -18,3 +18,25 @@ block content
 
 
 			|: #{entity.description}
+
+	h3 Entities container:
+
+	ul.entities.container
+	each entity in entities
+		li.entity.container(data-action="/entities/#{entity.id}")
+
+	script
+		$('.entity.container').on('update',function(event){
+			event.stopPropagation();
+			var $container = $(this),
+				action = $container.attr('data-action');
+
+			$.ajax({
+				url: action,
+				dataType: 'html',
+				}).success(function(data){
+				console.log(data,action);
+					$container.html(data);
+				});
+		});
+
