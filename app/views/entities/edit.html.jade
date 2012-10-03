@@ -6,7 +6,7 @@ block content
 			action='/entities/'+entity.id,
 			class='button_to')
 			input(type="hidden", name="_method", value="delete")
-			input.btn(type='submit', value='delete')
+			input.btn.btn-danger(type='submit', value='delete')
 
 	form(method='post', action='/entities/#{entity._id}')
 		input(type="hidden", name="_method", value="put")

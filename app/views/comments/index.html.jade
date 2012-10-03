@@ -6,6 +6,6 @@ each comment in comments
 		action='/entities/#{entity_id}/comments/#{comment.id}',
 		class='button_to delete')
 		input(type="hidden", name="_method", value="delete")
-		input.btn(type='submit', value='delete')
+		input.btn.btn-mini(type='submit', value='delete')
 
 	|#{comment.text}
