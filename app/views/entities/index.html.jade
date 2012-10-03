@@ -4,7 +4,9 @@ block content
 
 	a(href='/entities/new') New
 
-	div.entities.data-container
-		each entity in entities
-			div.entity.data-container(data-action="/entities/#{entity.id}")
+	div.row-fluid
+		div.entities.data-container.thumbnails
+			each entity in entities
+				div.span4
+					div.entity.data-container.thumbnail(data-action="/entities/#{entity.id}")
 

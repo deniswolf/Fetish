@@ -1,15 +1,16 @@
-h3 #{entity.name}
-	| #{' '}
-	a.btn(href='/entities/'+entity.id+'/edit')
-		i.icon-edit
-p.description.lead
-	|#{entity.description}
-p.statuses
-	form(method='post',
-			action='/entities/'+entity.id,
-			class='select_to')
+div.caption
+	h3 #{entity.name}
+		| #{' '}
+		a.btn(href='/entities/'+entity.id+'/edit')
+			i.icon-edit
+	p.description
+		|#{entity.description}
+	p.statuses
+		form(method='post',
+				action='/entities/'+entity.id,
+				class='select_to')
 
-		input(type="hidden", name="_method", value="put")
-		include _statuses
+			input(type="hidden", name="_method", value="put")
+			include _statuses
 
-div.comments.data-container(data-action="/entities/#{entity.id}/comments/")
+	div.comments.data-container(data-action="/entities/#{entity.id}/comments/")

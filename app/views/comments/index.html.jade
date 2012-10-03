@@ -1,14 +1,11 @@
 include _form
 
-ul
 each comment in comments
-	li
-		|[
-		form(method='post',
-			action='/entities/#{entity_id}/comments/#{comment.id}',
-			class='button_to delete')
-			input(type="hidden", name="_method", value="delete")
-			input(type='submit', value='delete')
-		|]
+	hr
+	form(method='post',
+		action='/entities/#{entity_id}/comments/#{comment.id}',
+		class='button_to delete')
+		input(type="hidden", name="_method", value="delete")
+		input(type='submit', value='delete')
 
-		|#{comment.text}
+	|#{comment.text}
