@@ -9,13 +9,32 @@ block content
 		label Status:
 		|#{entity.status}
 
-	div#comments
+	div.comments-container
 
 	script
-		$('#comments').on('update',function(){
-			$.pjax({
+		$('.comments-container').on('update',function(){
+			$comments = $(this);
+
+			$.ajax({
 				url: location.href.match(/\/entities\/[\w]+/)[0]+'/comments/',
-				container: '#comments'
+				dataType: 'html',
+				}).success(function(data){
+					$comments.html(data);
 				});
+		});
+
+		$('.comments-container').trigger('update');
+
+		$('body').on('submit','.comments-form',function(){
+			event.preventDefault();
+
+			var $form = $(this),
+				$container = $form.closest('.comments-container'),
+				postData = $form.serialize(),
+				postUrl = $form.attr('action');
+
+			$.post(postUrl, postData).success(function(){
+				$container.trigger('update');
 			});
-		$('#comments').trigger('update');
+
+		});
