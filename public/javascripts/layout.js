@@ -17,7 +17,7 @@ $(document).ready(function(){
 			dataType: 'html'
 		}).success(function(data){
 				$container.html(data);
-				$container.find('.container').trigger('update');
+				$container.find('.data-container').trigger('update');
 		});
 	}
 
@@ -27,7 +27,7 @@ $(document).ready(function(){
 		event.preventDefault();
 
 		var $form = $(this),
-			$container = $form.closest('.container'),
+			$container = $form.closest('.data-container'),
 			postData = $form.serialize(),
 			postUrl = $form.attr('action');
 		$.post(postUrl, postData).success(function(data){
@@ -35,7 +35,7 @@ $(document).ready(function(){
 		});
 	}
 
-	$('body').on('update','.comments.container,.entity.container',getUpdateContainer);
+	$('body').on('update','.comments.data-container,.entity.data-container',getUpdateContainer);
 
 	$('body').on('submit','form.comments-form, form.button_to.delete',postFormUpdateContainer);
 
@@ -45,7 +45,7 @@ $(document).ready(function(){
 	});
 
 	//init views in Entity
-	$('.entity.container').trigger('update');
+	$('.entity.data-container').trigger('update');
 
 
 });

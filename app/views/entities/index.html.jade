@@ -4,7 +4,7 @@ block content
 
 	a(href='/entities/new') New
 
-	div.entities.container
+	div.entities.data-container
 		each entity in entities
-			div.entity.container(data-action="/entities/#{entity.id}")
+			div.entity.data-container(data-action="/entities/#{entity.id}")
 
