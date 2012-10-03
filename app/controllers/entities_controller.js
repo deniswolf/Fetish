@@ -1,12 +1,13 @@
 var locomotive = require('locomotive'),
 	Controller = locomotive.Controller,
-	Entity = require('../models/entity_model');
+	Model = require('../models/entity_model');
 
 var C = new Controller();
 
 C.index = function(){
 	var self = this;
-	Entity.find(function(err, data){
+
+	Model.find(function(err, data){
 		if (err) self.render();
 		self.entities = data;
 		self.render();
@@ -18,10 +19,12 @@ C.new = function(){
 };
 
 C.create = function(){
-	var self = this;
-	if (self.param('entity')){
-		Entity.create(
-			self.param('entity'),
+	var self = this,
+		entity = self.param('entity');
+
+	if (entity){
+		Model.create(
+			entity,
 			function(err){
 				if (err) return handleError(err);
 				self.redirect('/entities');
@@ -32,10 +35,12 @@ C.create = function(){
 };
 
 C.edit = function(){
-	var self = this;
-	if (self.param('id')){
-		Entity.findById(
-			self.param('id'),
+	var self = this,
+		id = self.param('id');
+
+	if (id){
+		Model.findById(
+			id,
 			function(err, data){
 				if (err) return handleError(err);
 				self.entity = data;
@@ -47,12 +52,14 @@ C.edit = function(){
 };
 
 C.update = function(){
-	var self = this;
-	var id = self.param('id');
+	var self = this,
+		id = self.param('id'),
+		entity = self.param('entity');
+
 	if (id){
-		Entity.findByIdAndUpdate(
+		Model.findByIdAndUpdate(
 			id,
-			self.param('entity'),
+			entity,
 			function(err){
 				if (err) return handleError(err);
 				self.redirect('/entities/'+id);
@@ -60,15 +67,16 @@ C.update = function(){
 			);
 
 	} else {
-		self.render('index')
+		self.render('index');
 	}
 };
 
 C.destroy = function(){
-	var self = this;
-	var id = self.param('id');
+	var self = this,
+		id = self.param('id');
+
 	if (id){
-		Entity.findByIdAndRemove(
+		Model.findByIdAndRemove(
 			id,
 			function(err){
 				if (err) return handleError(err);
@@ -82,10 +90,12 @@ C.destroy = function(){
 };
 
 C.show = function(){
-	var self = this;
-	if (self.param('id')){
-		Entity.findById(
-			self.param('id'),
+	var self = this,
+		id = self.param('id');
+
+	if (id){
+		Model.findById(
+			id,
 			function(err, data){
 				if (err) return handleError(err);
 				self.entity = data;
