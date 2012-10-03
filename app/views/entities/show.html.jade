@@ -1,4 +1,6 @@
-h2 #{entity.name}
+h3 #{entity.name}
+	| #{' '}
+	a(href='/entities/'+entity.id+'/edit') edit
 p
 	label Description:
 	|#{entity.description}

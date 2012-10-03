@@ -4,26 +4,9 @@ block content
 
 	a(href='/entities/new') New
 
-	h3
-		|List of entities in the system:
-	ul
+	div.entities.container
 	each entity in entities
-		li
-			a(href='/entities/'+entity._id) #{entity.name}
-			| #{' '}
-
-			|[
-			a(href='/entities/'+entity.id+'/edit') edit
-			|]
-
-
-			|: #{entity.description}
-
-	h3 Entities container:
-
-	ul.entities.container
-	each entity in entities
-		li.entity.container(data-action="/entities/#{entity.id}")
+		div.entity.container(data-action="/entities/#{entity.id}")
 
 	script
 
