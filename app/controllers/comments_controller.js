@@ -60,24 +60,4 @@ C.destroy = function(){
 	}
 };
 
-C.show = function(){
-	var self = this,
-		entity_id = self.param('entity_id'),
-		id = self.param('id');
-
-	if (id){
-		Model.findById(
-			entity_id,
-			function(err, data){
-				if (err) return handleError(err);
-				self.entity_id = entity_id;
-				self.comment = data.comments.id(id);
-				self.render();
-			});
-	} else {
-		return;
-	}
-};
-
-
 module.exports = C;
