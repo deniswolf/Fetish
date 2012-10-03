@@ -1,7 +1,8 @@
 h3 #{entity.name}
 	| #{' '}
-	a(href='/entities/'+entity.id+'/edit') edit
-p.description
+	a.btn(href='/entities/'+entity.id+'/edit')
+		i.icon-edit
+p.description.lead
 	|#{entity.description}
 p.statuses
 	form(method='post',
