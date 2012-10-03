@@ -14,14 +14,15 @@ block content
 			input(type="hidden", name="_method", value="put")
 			include _statuses
 
-	div.comments.container
+	div.comments.container(data-action="/entities/#{entity.id}/comments/")
 
 	script
 		$('.comments.container').on('update',function(){
-			$comments = $(this);
+			var $comments = $(this),
+				action = $comments.attr('data-action');
 
 			$.ajax({
-				url: location.href.match(/\/entities\/[\w]+/)[0]+'/comments/',
+				url: action,
 				dataType: 'html',
 				}).success(function(data){
 					$comments.html(data);
