@@ -36,5 +36,19 @@ block content
 			$.post(postUrl, postData).success(function(){
 				$container.trigger('update');
 			});
+		});
+
+		$('body').on('submit','.button_to.delete',function(){
+			event.preventDefault();
+
+			var $form = $(this),
+				$container = $form.closest('.comments-container'),
+				postData = $form.serialize(),
+				postUrl = $form.attr('action');
+
+			$.post(postUrl, postData).success(function(){
+				$container.trigger('update');
+			});
 
 		});
+
