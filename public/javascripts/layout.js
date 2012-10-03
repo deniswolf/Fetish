@@ -12,7 +12,9 @@ $(document).ready(function(){
 	//ajax get/post sugar for Enitites and their Comments
 
 	function getUpdateContainer(){
-		var event = arguments[0];
+		var event = arguments[0],
+			callback = arguments[1];
+
 		event.stopPropagation();
 
 		var $container = $(this),
@@ -23,11 +25,13 @@ $(document).ready(function(){
 			dataType: 'html'
 		}).success(function(data){
 				$container.html(data);
+				callback && callback($container, data);
 		});
 	}
 
 	function postFormUpdateContainer(){
-		var event = arguments[0];
+		var event = arguments[0],
+			callback = arguments[1];
 		event.preventDefault();
 
 		var $form = $(this),
@@ -35,8 +39,9 @@ $(document).ready(function(){
 			postData = $form.serialize(),
 			postUrl = $form.attr('action');
 
-		$.post(postUrl, postData).success(function(){
+		$.post(postUrl, postData).success(function(data){
 			$container.trigger('update');
+			callback && callback($form, data);
 		});
 	}
 
@@ -48,6 +53,12 @@ $(document).ready(function(){
 	$('body').on('change','.select_to select',function(){
 		$(this).closest('form').submit();
 	});
+
+	//init views in Entity
+	$('.entity.container').trigger('update',[function($container, data){
+		$container.find('.comments.container').trigger('update');
+	}]);
+
 
 
 
