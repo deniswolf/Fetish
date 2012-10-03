@@ -1,8 +1,12 @@
 extends ../layout.html
 
-h2 Edit
-
 block content
+	h2 #{entity.name}
+		form(method='post',
+			action='/entities/'+entity.id,
+			class='button_to')
+			input(type="hidden", name="_method", value="delete")
+			input(type='submit', value='delete')
 
 	form(method='post', action='/entities/#{entity._id}')
 		input(type="hidden", name="_method", value="put")
