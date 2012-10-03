@@ -1,0 +1,6 @@
+form(method='post', action='/entities/#{entity_id}/comments/')
+	p
+		label Text:
+		textarea(name='comment[text]')
+	p
+		input(type="submit", value="Add")

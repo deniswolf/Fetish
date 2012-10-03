@@ -1,0 +1,16 @@
+h3 Comments:
+
+include _form
+
+ul
+each comment in comments
+	li
+		a(href='/entities/#{entity_id}/comments/#{comment.id}') #{comment.text}
+
+		|[
+		form(method='post',
+			action='/entities/#{entity_id}/comments/#{comment.id}',
+			class='button_to')
+			input(type="hidden", name="_method", value="delete")
+			input(type='submit', value='delete')
+		|]
