@@ -24,11 +24,4 @@ if typeof(entity) !== 'undefined'
 			option(value="yellow") Yellow: Warning! Ask before touch!
 			option(value="green") Green: Everything is fine
 
-		script
-			$(document).ready(function(){
-				var $select = $('form select');
-				var selected_option = $select.attr('data-selected');
-				$select.val(selected_option);
-			});
-
 input(type="submit", value="Save")
