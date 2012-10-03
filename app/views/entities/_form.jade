@@ -19,9 +19,6 @@ else
 if typeof(entity) !== 'undefined'
 
 	p
-		select(name="entity[status]", data-selected="#{entity.status}")
-			option(value="red") Red: Alarm! Don't get close!!1
-			option(value="yellow") Yellow: Warning! Ask before touch!
-			option(value="green") Green: Everything is fine
+		include _statuses
 
 input(type="submit", value="Save")
