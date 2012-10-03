@@ -25,7 +25,7 @@ $(document).ready(function(){
 			dataType: 'html'
 		}).success(function(data){
 				$container.html(data);
-				callback && callback($container, data);
+				$container.find('.container').trigger('update');
 		});
 	}
 
@@ -41,7 +41,6 @@ $(document).ready(function(){
 
 		$.post(postUrl, postData).success(function(data){
 			$container.trigger('update');
-			callback && callback($form, data);
 		});
 	}
 
@@ -55,9 +54,7 @@ $(document).ready(function(){
 	});
 
 	//init views in Entity
-	$('.entity.container').trigger('update',[function($container, data){
-		$container.find('.comments.container').trigger('update');
-	}]);
+	$('.entity.container').trigger('update');
 
 
 
