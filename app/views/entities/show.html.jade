@@ -1,54 +1,52 @@
-extends ../layout.html
+h2 #{entity.name}
+p
+	label Description:
+	|#{entity.description}
+p
+	label Status:
+	form(method='post',
+			action='/entities/'+entity.id,
+			class='select_to')
 
-block content
-	h2 #{entity.name}
-	p
-		label Description:
-		|#{entity.description}
-	p
-		label Status:
-		form(method='post',
-				action='/entities/'+entity.id,
-				class='select_to')
+		input(type="hidden", name="_method", value="put")
+		include _statuses
 
-			input(type="hidden", name="_method", value="put")
-			include _statuses
+div.comments.container(data-action="/entities/#{entity.id}/comments/")
 
-	div.comments.container(data-action="/entities/#{entity.id}/comments/")
+script
+	$('.comments.container').on('update',function(event){
+		event.stopPropagation();
+		var $comments = $(this),
+			action = $comments.attr('data-action');
 
-	script
-		$('.comments.container').on('update',function(){
-			var $comments = $(this),
-				action = $comments.attr('data-action');
-
-			$.ajax({
-				url: action,
-				dataType: 'html',
-				}).success(function(data){
-					$comments.html(data);
-				});
-		});
-
-		$('.comments.container').trigger('update');
-
-		function postFormUpdateContainer(){
-			event.preventDefault();
-
-			var $form = $(this),
-				$container = $form.closest('.container'),
-				postData = $form.serialize(),
-				postUrl = $form.attr('action');
-
-			$.post(postUrl, postData).success(function(){
-				$container.trigger('update');
+		$.ajax({
+			url: action,
+			dataType: 'html',
+			}).success(function(data){
+				$comments.html(data);
 			});
-		}
+	});
 
-		$('body').on('submit','.comments-form',postFormUpdateContainer);
+	$('.comments.container').trigger('update');
 
-		$('body').on('submit','form.button_to.delete',postFormUpdateContainer);
+	function postFormUpdateContainer(){
+		event.preventDefault();
 
-		$('body').on('submit','form.select_to',postFormUpdateContainer);
-		$('body').on('change','.select_to select',function(){
-			$(this).closest('form').submit();
+		var $form = $(this),
+			$container = $form.closest('.container'),
+			postData = $form.serialize(),
+			postUrl = $form.attr('action');
+
+		$.post(postUrl, postData).success(function(){
+			$container.trigger('update');
 		});
+	}
+
+	$('body').on('submit','.comments-form',postFormUpdateContainer);
+
+	$('body').on('submit','form.button_to.delete',postFormUpdateContainer);
+
+	$('body').on('submit','form.select_to',postFormUpdateContainer);
+	$('body').on('change','.select_to select',function(){
+		$(this).closest('form').submit();
+	});
