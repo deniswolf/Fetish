@@ -1,7 +1,7 @@
 extends ../layout.html
 
 block content
-	div.hero-unit.span4
+	div.hero-unit.entity.thumbnail
 		h2 #{entity.name}
 			form(method='post',
 				action='/entities/'+entity.id,
