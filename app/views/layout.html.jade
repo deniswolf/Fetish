@@ -12,8 +12,13 @@ html
 		div.container-fluid
 			div.row-fluid
 				div.span12
-					div.btn-group.nav-header
-						a.btn.btn-primary(href='/entities')
-							i.icon-home
-						a.btn(href='/entities/new') New
+					div.row-fluid
+						div.span12.nav-header
+							div.span9.btn-group
+								a.btn.btn-primary(href='/entities')
+									i.icon-home
+								a.btn(href='/entities/new') New
+							div.span3
+								include _login
+
 					block content

@@ -38,3 +38,8 @@
 .comment-text {
 	font-weight: bold;
 }
+
+img.user-picture {
+	margin: 5px;
+	height: 25px;
+}

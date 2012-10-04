@@ -1,0 +1,9 @@
+div.pull-right
+	if user
+		div.user-profile
+			if user._json.picture
+				img.user-picture.img-rounded(src="#{user._json.picture}")
+			| #{user.displayName}
+			a.btn.btn-link(href="/auth/logout") Logout
+	else
+		a.btn.btn-primary(href="/auth/login") Login
