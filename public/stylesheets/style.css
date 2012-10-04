@@ -4,9 +4,12 @@
 
 .comments-body {
 	height: 170px;
-	overflow-y: scroll;
+	overflow-y: hidden;
 }
 
 .entity.thumbnail {
-	height: 280px;
+	max-height: 280px;
+	width: 260px;
+	margin: 10px;
+	float: left;
 }

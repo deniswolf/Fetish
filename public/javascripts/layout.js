@@ -43,7 +43,7 @@ $(document).ready(function(){
 	$('body').on('after-update','.entity.data-container', function(){
 		var $container =$(this),
 			status = $container.find('form.status .value').attr('value');
-			console.log($container, status);
+
 		$container.removeClass('alert-error alert-success alert');
 		switch(status){
 			case 'green':
@@ -56,6 +56,10 @@ $(document).ready(function(){
 				$container.addClass('alert-error');
 				break;
 		}
+
+		$container.closest('.entities.thumbnails').masonry({
+			itemSelector: '.thumbnail'
+		});
 	});
 	$('body').on('submit','form.status',postFormUpdateContainer);
 	$('body').on('click','.entity-header .btn-group .dropdown-menu a',function(){
@@ -68,6 +72,7 @@ $(document).ready(function(){
 
 	//init views in Entity
 	$('.entity.data-container').trigger('update');
+
 
 
 });
