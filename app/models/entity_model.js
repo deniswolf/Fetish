@@ -4,10 +4,11 @@ var EntitySchema = new db.mongoose.Schema({
 	name: String,
 	owners: [db.mongoose.Schema.Types.ObjectId],
 	description: String,
-	status: String,
+	status: { type: String, default: "green" },
 	comments: [{
 		text: String,
-		author: db.mongoose.Schema.Types.ObjectId
+		author: db.mongoose.Schema.Types.ObjectId,
+		created: { type: Date, default: Date.now }
 	}]
 });
 
