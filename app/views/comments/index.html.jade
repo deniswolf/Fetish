@@ -7,7 +7,10 @@ div.comments-body
 				input(type="hidden", name="_method", value="delete")
 				input.close.btn(type='submit', value='-')
 			div.comment-text.span10
-				|#{comment.text}
+				if comment.author
+					span.label.label-inverse.muted #{comment.author.name}
+				p
+					|#{comment.text}
 
 p
 	include _form
