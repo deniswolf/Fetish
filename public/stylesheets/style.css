@@ -13,3 +13,12 @@
 	margin: 10px;
 	float: left;
 }
+
+.alert-danger, .alert-error {
+	background-color: #AD1D28;
+}
+
+.alert-danger .comment-text, .alert-error .comment-text {
+	font-weight: bold;
+	color: white;
+}
