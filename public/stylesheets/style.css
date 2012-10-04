@@ -3,7 +3,7 @@
 }
 
 .comments-body {
-	max-height: 150px;
+	height: 170px;
 	overflow-y: scroll;
 }
 
