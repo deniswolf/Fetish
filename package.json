@@ -10,6 +10,7 @@
     "mongoose": "*",
     "passport": "*",
     "passport-google-oauth":"*",
-    "session-mongoose":"*"
+    "session-mongoose":"*",
+    "socket.io":"*"
   }
 }
