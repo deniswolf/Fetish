@@ -7,7 +7,7 @@ var EntitySchema = new db.mongoose.Schema({
 	status: { type: String, default: "green" },
 	comments: [{
 		text: String,
-		author: db.mongoose.Schema.Types.ObjectId,
+		author: {},
 		created: { type: Date, default: Date.now }
 	}]
 });

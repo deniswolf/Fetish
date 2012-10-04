@@ -27,7 +27,10 @@ C.index = function(){
 C.create = function(){
 	var self = this,
 		entity_id = self.param('entity_id'),
-		comment = self.param('comment');
+		comment = self.param('comment'),
+		user = self.req.user;
+
+		if (user) comment.author = user._json;
 
 	Model.findById(
 		entity_id,
