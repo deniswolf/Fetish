@@ -73,7 +73,15 @@ $(document).ready(function(){
 	//init views in Entity
 	$('.entity.data-container').trigger('update');
 
+	//socket.io
 
+	var socketEntities = io.connect('http://localhost:3001/entities');
+	socketEntities.on('updateAll',
+		function(data){
+			console.log('yay!');
+			$('.entity.data-container').trigger('update');
+		}
+	);
 
 });
 })(jQuery);
