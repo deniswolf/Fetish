@@ -5,5 +5,8 @@
 	},
 	"cookies":{
 		"secret":""
+	},
+	"socket.io":{
+		"port":3001
 	}
 }

@@ -1,11 +1,8 @@
-var socketIo = require('socket.io'),
+var config = require('../config.json')["socket.io"],
+	io = require('socket.io').listen(config.port),
 	//as for now - init only one socket file
-	sockets = require('../../app/sockets/entities_socket.js');
+	socketListeners =  [ require('../../app/sockets/entities_socket.js') ];
 
-module.exports = function socketInit() {
-
-	var app = this._routes._app;
-	console.log('this is SOCKET app:', app);
-var io = socketIo.listen(app);
-	// sockets.init(io.listen(app););
-};
+	socketListeners.forEach(function attachSocket (socketListener) {
+		socketListener.init(io.of('/entities'));
+	});
