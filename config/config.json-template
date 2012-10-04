@@ -1,0 +1,9 @@
+{
+	"auth":{
+		"clientID":"",
+		"clientSecret":""
+	},
+	"cookies":{
+		"secret":""
+	}
+}
