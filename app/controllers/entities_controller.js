@@ -6,6 +6,7 @@ var C = new Controller();
 
 C.index = function(){
 	var self = this;
+	self.user = self.req.user;
 
 	Model.find(null,null,{sort:'name'},function(err, data){
 		if (err) self.render();
@@ -15,12 +16,15 @@ C.index = function(){
 };
 
 C.new = function(){
-	this.render();
+	var self = this;
+	self.user = self.req.user;
+	self.render();
 };
 
 C.create = function(){
 	var self = this,
 		entity = self.param('entity');
+		self.user = self.req.user;
 
 	if (entity){
 		Model.create(
@@ -37,6 +41,7 @@ C.create = function(){
 C.edit = function(){
 	var self = this,
 		id = self.param('id');
+		self.user = self.req.user;
 
 	if (id){
 		Model.findById(
@@ -55,6 +60,7 @@ C.update = function(){
 	var self = this,
 		id = self.param('id'),
 		entity = self.param('entity');
+		self.user = self.req.user;
 
 	if (id){
 		Model.findByIdAndUpdate(
@@ -74,6 +80,7 @@ C.update = function(){
 C.destroy = function(){
 	var self = this,
 		id = self.param('id');
+		self.user = self.req.user;
 
 	if (id){
 		Model.findByIdAndRemove(
@@ -92,6 +99,7 @@ C.destroy = function(){
 C.show = function(){
 	var self = this,
 		id = self.param('id');
+		self.user = self.req.user;
 
 	if (id){
 		Model.findById(
