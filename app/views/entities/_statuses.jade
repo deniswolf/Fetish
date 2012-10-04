@@ -1,4 +1,19 @@
-select.span2(name="entity[status]", data-selected="#{entity.status}")
-	option.btn.btn-success(value="green",	selected=entity.status === 'green') green
-	option(value="yellow",	selected=entity.status === 'yellow') yellow
-	option(value="red",		selected=entity.status === 'red') red
+div.entity-header
+	form.status(method='post',
+			action='/entities/'+entity.id,
+			class='select_to',
+			style='display:none')
+
+		input(type="hidden", name="_method", value="put")
+		input.value(type="hidden", name="entity[status]", value="#{entity.status}")
+
+	div.btn-group
+		a.btn.dropdown-toggle(data-toggle="dropdown", href="#") #{entity.name}
+		ul.dropdown-menu
+			li
+				a(data-status="green", href="#") normal
+				a.btn-warning(data-status="yellow", href="#") warning
+				a.btn-danger(data-status="red", href="#") danger
+	a(href='/entities/'+entity.id+'/edit')
+		i.icon-edit
+

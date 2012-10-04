@@ -1,12 +1,4 @@
 div.caption
-	h4.span10 #{entity.name}
-		a(href='/entities/'+entity.id+'/edit')
-			i.icon-edit
-	form.inline-form.statuses(method='post',
-			action='/entities/'+entity.id,
-			class='select_to')
-
-		input(type="hidden", name="_method", value="put")
-		include _statuses
+	include _statuses
 
 	div.comments.data-container(data-action="/entities/#{entity.id}/comments/")

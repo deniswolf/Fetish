@@ -17,6 +17,7 @@ $(document).ready(function(){
 			dataType: 'html'
 		}).success(function(data){
 				$container.html(data);
+				$container.trigger('after-update');
 				$container.find('.data-container').trigger('update');
 		});
 	}
@@ -39,9 +40,30 @@ $(document).ready(function(){
 
 	$('body').on('submit','form.comments-form, form.button_to.delete',postFormUpdateContainer);
 
-	$('body').on('submit','form.select_to',postFormUpdateContainer);
-	$('body').on('change','.select_to select',function(){
-		$(this).closest('form').submit();
+	$('body').on('after-update','.entity.data-container', function(){
+		var $container =$(this),
+			status = $container.find('form.status .value').attr('value');
+			console.log($container, status);
+		$container.removeClass('alert-error alert-success alert');
+		switch(status){
+			case 'green':
+				$container.addClass('alert-success');
+				break;
+			case 'yellow':
+				$container.addClass('alert');
+				break;
+			case 'red':
+				$container.addClass('alert-error');
+				break;
+		}
+	});
+	$('body').on('submit','form.status',postFormUpdateContainer);
+	$('body').on('click','.entity-header .btn-group .dropdown-menu a',function(){
+		var status = $(this).attr('data-status'),
+		    $form = $(this).closest('.entity-header').find('form.status');
+
+		    $form.find('.value').attr('value', status);
+		    $form.submit();
 	});
 
 	//init views in Entity
