@@ -7,7 +7,7 @@ var C = new Controller();
 C.index = function(){
 	var self = this;
 
-	Model.find(function(err, data){
+	Model.find(null,null,{sort:'name'},function(err, data){
 		if (err) self.render();
 		self.entities = data;
 		self.render();
