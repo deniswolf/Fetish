@@ -1,6 +1,10 @@
-var express = require('express')
-  , poweredBy = require('connect-powered-by')
-  , util = require('util');
+var express = require('express'),
+    poweredBy = require('connect-powered-by'),
+    util = require('util'),
+    passport = require('passport'),
+    mongooseSessionStore = require("session-mongoose"),
+    db_conf = require('../database.json'),
+    cookies_conf = require('../config.json').cookies;
 
 module.exports = function() {
   // Warn of version mismatch between global "lcm" binary and local installation
@@ -40,5 +44,11 @@ module.exports = function() {
   this.use(express.static(__dirname + '/../../public'));
   this.use(express.bodyParser());
   this.use(express.methodOverride());
+  this.use(express.cookieParser(cookies_conf.secret)),
+  this.use(express.session({
+    store: new mongooseSessionStore({url:'mongodb://'+db_conf.host+'/'+db_conf.database})
+  })),
+  this.use(passport.initialize());
+  this.use(passport.session());
   this.use(this.router);
-}
+};

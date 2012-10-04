@@ -5,9 +5,13 @@
 // `function(req, res, next)` is also fully supported.  Consult the Locomotive
 // Guide on [routing](http://locomotivejs.org/guide/routing.html) for additional
 // information.
+
 module.exports = function routes() {
 	this.root('entities#index');
 	this.resources('entities', function(){
 		this.resources('comments');
 	});
+	this.match('/auth/login','passport#login');
+	this.match('/auth/callback','passport#callback');
+	this.match('/auth/logout','passport#logout');
 };

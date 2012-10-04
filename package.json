@@ -7,6 +7,9 @@
     "express": "3.x.x",
     "connect-powered-by": "0.1.x",
     "jade": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "passport": "*",
+    "passport-google-oauth":"*",
+    "session-mongoose":"*"
   }
 }
