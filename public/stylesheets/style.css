@@ -30,7 +30,11 @@
 .alert .close {
 	position: inherit;
 }
-s
+
+.entity-name {
+	font-weight: bold;
+}
+
 .comment-text {
 	font-weight: bold;
 }
