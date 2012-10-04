@@ -1,4 +1,4 @@
-div.entity-header
+div.entity-header.row-fluid
 	form.status(method='post',
 			action='/entities/'+entity.id,
 			class='select_to',
@@ -8,12 +8,13 @@ div.entity-header
 		input.value(type="hidden", name="entity[status]", value="#{entity.status}")
 
 	div.btn-group
-		a.btn.dropdown-toggle(data-toggle="dropdown", href="#") #{entity.name}
+		a.span11.btn.dropdown-toggle(data-toggle="dropdown", href="#") #{entity.name}
 		ul.dropdown-menu
 			li
-				a(data-status="green", href="#") normal
+				a.btn-success(data-status="green", href="#") normal
 				a.btn-warning(data-status="yellow", href="#") warning
 				a.btn-danger(data-status="red", href="#") danger
-	a(href='/entities/'+entity.id+'/edit')
+	a.span1(href='/entities/'+entity.id+'/edit')
 		i.icon-edit
+	hr
 
