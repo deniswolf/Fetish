@@ -1,12 +1,13 @@
 div.comments-body
 	each comment in comments
-		form.form-inline(method='post',
-			action='/entities/#{entity_id}/comments/#{comment.id}',
-			class='button_to delete')
-			input(type="hidden", name="_method", value="delete")
-			input.close.btn(type='submit', value='-')
-		div.span10
-			|#{comment.text}
+		div.row-fluid
+			form.form-inline(method='post',
+				action='/entities/#{entity_id}/comments/#{comment.id}',
+				class='button_to delete')
+				input(type="hidden", name="_method", value="delete")
+				input.close.btn(type='submit', value='-')
+			div.span10
+				|#{comment.text}
 
 p
 	include _form
