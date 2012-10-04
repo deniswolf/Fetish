@@ -18,7 +18,19 @@
 	background-color: #AD1D28;
 }
 
+.alert, .alert-block {
+	background-color: #DEBB27;
+}
+
 .alert-danger .comment-text, .alert-error .comment-text {
-	font-weight: bold;
 	color: white;
+}
+
+/*fix for close button in alerted thumbnail*/
+.alert .close {
+	position: inherit;
+}
+s
+.comment-text {
+	font-weight: bold;
 }
