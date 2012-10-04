@@ -13,7 +13,12 @@ C.index = function(){
 		function(err, data){
 			if (err) self.render();
 			self.entity_id = entity_id;
-			self.comments = data.comments;
+
+			self.comments = data.comments.sort(
+				//sort comments by 'created' field, new first
+				function(a, b){
+					return b.created.getTime() - a.created.getTime();
+				});
 			self.render();
 		}
 	);
