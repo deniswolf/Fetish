@@ -12,7 +12,8 @@ html
 		div.container-fluid
 			div.row-fluid
 				div.span12
-					h1
-						a(href='/entities') Entities
-						a.btn.btn-primary(href='/entities/new') New
+					div.btn-group.nav-header
+						a.btn.btn-primary(href='/entities')
+							i.icon-home
+						a.btn(href='/entities/new') New
 					block content
