@@ -1,6 +1,7 @@
 var locomotive = require('locomotive'),
 	Controller = locomotive.Controller,
-	Model = require('../models/entity_model');
+	Model = require('../models/entity_model'),
+	socketIoRoom = require('../sockets/entities_socket').room;
 
 var C = new Controller();
 
@@ -40,6 +41,7 @@ C.create = function(){
 
 			data.save(function(err){
 				if (err) return handleError(err);
+				socketIoRoom.emit('updateEntity',entity_id);
 				self.redirect('/entities/'+entity_id+'/comments');
 			});
 		}
@@ -59,6 +61,8 @@ C.destroy = function(){
 				self.entity_id = entity_id;
 				self.comment = data.comments.id(id).remove();
 				data.save(function(err){
+					if (err) return handleError(err);
+					socketIoRoom.emit('updateEntity',entity_id);
 					self.redirect('/entities/'+entity_id+'/comments');
 				});
 
