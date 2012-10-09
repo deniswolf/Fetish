@@ -38,6 +38,10 @@ $(document).ready(function(){
 
 	$('body').on('submit','form.comments-form, form.button_to.delete',postForm);
 
+	$('body').on('update','.entities.thumbnails', function(){
+		location.reload();
+	});
+
 	$('body').on('after-update','.entity.data-container', function(){
 		var $container =$(this),
 			status = $container.find('form.status .value').attr('value');
@@ -77,7 +81,7 @@ $(document).ready(function(){
 	socketEntities
 		.on('updateAll',
 			function(data){
-				$('.entity.data-container').trigger('update');
+				$('.entities.thumbnails').trigger('update');
 			}
 		)
 		.on('updateEntity',
