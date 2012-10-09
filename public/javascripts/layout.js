@@ -22,7 +22,7 @@ $(document).ready(function(){
 		});
 	}
 
-	function postFormUpdateContainer(){
+	function postForm(){
 		var event = arguments[0],
 			callback = arguments[1];
 		event.preventDefault();
@@ -31,14 +31,12 @@ $(document).ready(function(){
 			$container = $form.closest('.data-container'),
 			postData = $form.serialize(),
 			postUrl = $form.attr('action');
-		$.post(postUrl, postData).success(function(data){
-			$container.trigger('update');
-		});
+		$.post(postUrl, postData);
 	}
 
 	$('body').on('update','.comments.data-container,.entity.data-container',getUpdateContainer);
 
-	$('body').on('submit','form.comments-form, form.button_to.delete',postFormUpdateContainer);
+	$('body').on('submit','form.comments-form, form.button_to.delete',postForm);
 
 	$('body').on('after-update','.entity.data-container', function(){
 		var $container =$(this),
@@ -61,7 +59,7 @@ $(document).ready(function(){
 			itemSelector: '.thumbnail'
 		});
 	});
-	$('body').on('submit','form.status',postFormUpdateContainer);
+	$('body').on('submit','form.status',postForm);
 	$('body').on('click','.entity-header .btn-group .dropdown-menu a',function(){
 		var status = $(this).attr('data-status'),
 		    $form = $(this).closest('.entity-header').find('form.status');
@@ -79,7 +77,6 @@ $(document).ready(function(){
 	socketEntities
 		.on('updateAll',
 			function(data){
-				console.log('yay!');
 				$('.entity.data-container').trigger('update');
 			}
 		)
