@@ -6,5 +6,5 @@ block content
 		div.entities.data-container.thumbnails
 			each entity in entities
 				div.span4
-					div.entity.data-container.thumbnail(data-action="/entities/#{entity.id}")
+					div.entity.data-container.thumbnail(id="entity#{entity.id}",data-action="/entities/#{entity.id}")
 

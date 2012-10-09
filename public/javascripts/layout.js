@@ -76,12 +76,18 @@ $(document).ready(function(){
 	//socket.io
 
 	var socketEntities = io.connect('http://localhost:3001/entities');
-	socketEntities.on('updateAll',
-		function(data){
-			console.log('yay!');
-			$('.entity.data-container').trigger('update');
-		}
-	);
+	socketEntities
+		.on('updateAll',
+			function(data){
+				console.log('yay!');
+				$('.entity.data-container').trigger('update');
+			}
+		)
+		.on('updateEntity',
+			function(entity_id){
+				$('#entity'+entity_id).trigger('update');
+			}
+		);
 
 });
 })(jQuery);

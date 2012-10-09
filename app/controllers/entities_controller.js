@@ -70,6 +70,7 @@ C.update = function(){
 			entity,
 			function(err){
 				if (err) return handleError(err);
+				socketIoRoom.emit('updateEntity',id);
 				self.redirect('/');
 			}
 			);
@@ -89,6 +90,7 @@ C.destroy = function(){
 			id,
 			function(err){
 				if (err) return handleError(err);
+				socketIoRoom.emit('updateAll',true);
 				self.redirect('/');
 			}
 			);
