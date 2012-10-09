@@ -1,6 +1,7 @@
 var locomotive = require('locomotive'),
 	Controller = locomotive.Controller,
-	Model = require('../models/entity_model');
+	Model = require('../models/entity_model'),
+	socketIoRoom = require('../sockets/entities_socket').room;
 
 var C = new Controller();
 
@@ -31,6 +32,7 @@ C.create = function(){
 			entity,
 			function(err){
 				if (err) return handleError(err);
+				socketIoRoom.emit('updateAll',true);
 				self.redirect('/');
 			});
 	} else {
