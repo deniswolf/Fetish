@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 	//socket.io
 
-	var socketEntities = io.connect('http://localhost:3001/entities');
+	var socketEntities = io.connect('http://'+location.hostname+':3001/entities');
 	socketEntities
 		.on('updateAll',
 			function(data){
