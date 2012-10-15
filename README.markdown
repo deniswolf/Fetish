@@ -18,6 +18,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
+## Installation
+
+### Prerequisites
+
+### Node.js
+
+#### Mac OS X
+`brew install node'
+
+#### Windows
+
+Go to [official site](http://nodejs.org/) and grab newest version.
+
+### Locomotive.js
+
+`npm install -g locomotive'
+
+### MongoDB
+
+#### Mac OS X
+`brew install mongodb`
+
+#### Windows
+[Download](http://www.mongodb.org/downloads) and setup as Windows Service according to [manual](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service).
+Don't forget to [run cmd as Administrator](http://stackoverflow.com/questions/4098909/got-access-is-denied-when-i-tried-to-install-64-bit-mongodb-in-windows-server).
+
+### Configure
+
+
 
 ## Installation
 
@@ -26,7 +55,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   *. `npm install`
   *. `npm install -g locomotive'
 
-2. Configure authorization
+2. In `config` copy `config.json-template` to `config.json`, check out description below and setup all necessary parameters.
+
+3. Authorization
 
   *. `https://code.google.com/apis/console/b/0/` - create app
   *. go to `API Access`
@@ -37,6 +68,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   *. copy `config/config.json-template` to `config/config.json` and fill in parameters from the step above
 
-3. Configure database:
+4. Catabase:
 
   *. if you want - change database host and name in `config/database.json`
+
+5. Feedback
+
+  You can provide users with button to send you mail. To enable this - fill in parameters for 'feedback' in config.json
