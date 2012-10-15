@@ -36,7 +36,12 @@
 }
 
 .comment-text {
+	padding: 5px;
 	font-weight: bold;
+}
+
+.comment-text span.text{
+	margin: 5px;
 }
 
 img.user-picture {

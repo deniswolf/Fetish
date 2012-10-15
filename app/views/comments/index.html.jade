@@ -8,8 +8,8 @@ div.comments-body
 				input.close.btn(type='submit', value='-')
 			div.comment-text.span10
 				if comment.author
-					span.label.label-inverse.muted #{comment.author.name}
-				p
+					span.label.label-inverse.muted.pull-left #{comment.author.name}
+				span.text
 					|#{comment.text}
 
 p
