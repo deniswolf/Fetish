@@ -34,6 +34,8 @@ $(document).ready(function(){
 		$.post(postUrl, postData);
 	}
 
+	$hostname = $('html').attr('data-hostname');
+
 	$('body').on('update','.comments.data-container,.entity.data-container',getUpdateContainer);
 
 	$('body').on('submit','form.comments-form, form.button_to.delete',postForm);
@@ -79,7 +81,7 @@ $(document).ready(function(){
 
 	//socket.io
 
-	var socketEntities = io.connect('http://'+location.hostname+':3001/entities');
+	var socketEntities = io.connect('http://'+$hostname+':3001/entities');
 	socketEntities
 		.on('updateAll',
 			function(data){

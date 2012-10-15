@@ -2,7 +2,9 @@ var locomotive = require('locomotive'),
 	Controller = locomotive.Controller,
 	Model = require('../models/entity_model'),
 	socketIoRoom = require('../sockets/entities_socket').room,
-	feedback = require('../../config/config.json')["feedback"];
+	config = require('../../config/config.json'),
+	feedback = config.feedback,
+	hostname = config.hostname;
 
 var C = new Controller();
 
@@ -10,6 +12,7 @@ C.index = function(){
 	var self = this;
 	self.user = self.req.user;
 	self.feedback = feedback;
+	self.hostname = hostname;
 
 	Model.find(null,null,{sort:'name'},function(err, data){
 		if (err) self.render();
@@ -22,6 +25,8 @@ C.new = function(){
 	var self = this;
 	self.user = self.req.user;
 	self.feedback = feedback;
+	self.hostname = hostname;
+
 	self.render();
 };
 
@@ -48,6 +53,8 @@ C.edit = function(){
 		id = self.param('id');
 		self.user = self.req.user;
 		self.feedback = feedback;
+		self.hostname = hostname;
+
 
 	if (id){
 		Model.findById(
