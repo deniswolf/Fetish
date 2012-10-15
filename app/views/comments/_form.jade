@@ -1,4 +1,4 @@
-form.comments-form.form-inline(method='post', action='/entities/#{entity_id}/comments/')
+form.comments-form.form-inline.hide(method='post', action='/entities/#{entity_id}/comments/')
 	div.row-fluid
-		textarea.span10(name='comment[text]', rows=1, placeholder="comment")
+		textarea.span10(name='comment[text]', rows=1, placeholder="comment's text")
 		input.btn.close(type="submit", value="+")

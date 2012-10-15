@@ -97,5 +97,13 @@ $(document).ready(function(){
 			}
 		);
 
+	$('body').on('click', '.entity .add-comment', function(){
+		var $entryContainer = $(this).closest('.entity.data-container'),
+			$commentForm = $entryContainer.find('form.comments-form');
+
+			$commentForm.toggleClass('hide');
+			$entryContainer.trigger('after-update');
+	});
+
 });
 })(jQuery);
