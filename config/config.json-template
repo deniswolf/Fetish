@@ -12,5 +12,9 @@
 	"feedback":{
 		"title":"",
 		"link":""
+	},
+	"database":{
+		"host":"localhost",
+		"database":"fetish-database"
 	}
 }

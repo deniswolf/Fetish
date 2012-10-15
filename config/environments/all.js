@@ -3,8 +3,9 @@ var express = require('express'),
     util = require('util'),
     passport = require('passport'),
     mongooseSessionStore = require("session-mongoose"),
-    db_conf = require('../database.json'),
-    cookies_conf = require('../config.json').cookies;
+    config = require('../config.json'),
+    db_conf = config.database,
+    cookies_conf = config.cookies;
 
 module.exports = function() {
   // Warn of version mismatch between global "lcm" binary and local installation
