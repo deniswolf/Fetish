@@ -21,6 +21,7 @@ C.index = function(){
 C.new = function(){
 	var self = this;
 	self.user = self.req.user;
+	self.feedback = feedback;
 	self.render();
 };
 
@@ -46,6 +47,7 @@ C.edit = function(){
 	var self = this,
 		id = self.param('id');
 		self.user = self.req.user;
+		self.feedback = feedback;
 
 	if (id){
 		Model.findById(
