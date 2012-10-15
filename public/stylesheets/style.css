@@ -43,3 +43,7 @@ img.user-picture {
 	margin: 5px;
 	height: 25px;
 }
+
+.entity .dropdown-menu{
+	background-color: rgba(255, 255, 255, 0.14);
+}
