@@ -68,6 +68,8 @@ $(document).ready(function(){
 		var status = $(this).attr('data-status'),
 		    $form = $(this).closest('.entity-header').find('form.status');
 
+		    if (!status) return;
+
 		    $form.find('.value').attr('value', status);
 		    $form.submit();
 	});

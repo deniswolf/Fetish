@@ -6,6 +6,14 @@ if typeof(entity) !== 'undefined'
 		label Description
 		textarea(name='entity[description]')
 			|#{entity.description}
+	div.alert-info
+		h4 Link
+		p
+			label Label
+			input(name='entity[link][label]', type="text", value='#{entity.link.label}')
+		p
+			label URL
+			input(name='entity[link][url]', type="text", value='#{entity.link.url}')
 else
 	p
 		label Name
@@ -13,5 +21,13 @@ else
 	p
 		label Description
 		textarea(name='entity[description]')
+	div.alert-info
+		h4 Link
+		p
+			label Label
+			input(name='entity[link][label]', type="text")
+		p
+			label URL
+			input(name='entity[link][url]', type="text")
 
 input.btn.btn-primary(type="submit", value="Save")

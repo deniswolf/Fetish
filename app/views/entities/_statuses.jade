@@ -14,6 +14,9 @@ div.entity-header.row-fluid
 				a.btn-success(data-status="green", href="#") normal
 				a.btn-warning(data-status="yellow", href="#") warning
 				a.btn-danger(data-status="red", href="#") danger
+				if entity.link.label && entity.link.url
+					br
+					a.btn-info(href="#{entity.link.url}", target="_blank")=entity.link.label
 	a.span1(href='/entities/'+entity.id+'/edit')
 		i.icon-edit
 	hr

@@ -5,6 +5,7 @@ var EntitySchema = new db.mongoose.Schema({
 	owners: [db.mongoose.Schema.Types.ObjectId],
 	description: String,
 	status: { type: String, default: "green" },
+	link: {url:String, label:String},
 	comments: [{
 		text: String,
 		author: {},
