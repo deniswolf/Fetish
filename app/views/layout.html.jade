@@ -18,6 +18,8 @@ html
 							div.span9.btn-group
 								a.btn.btn-primary(href='/')
 									i.icon-home
+								if feedback && feedback.title && feedback.link
+									a.btn(href=feedback.link)=feedback.title
 								a.btn(href='/entities/new') New
 							div.span3
 								include _login

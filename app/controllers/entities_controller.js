@@ -1,13 +1,15 @@
 var locomotive = require('locomotive'),
 	Controller = locomotive.Controller,
 	Model = require('../models/entity_model'),
-	socketIoRoom = require('../sockets/entities_socket').room;
+	socketIoRoom = require('../sockets/entities_socket').room,
+	feedback = require('../../config/config.json')["feedback"];
 
 var C = new Controller();
 
 C.index = function(){
 	var self = this;
 	self.user = self.req.user;
+	self.feedback = feedback;
 
 	Model.find(null,null,{sort:'name'},function(err, data){
 		if (err) self.render();

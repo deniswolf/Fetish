@@ -8,5 +8,9 @@
 	},
 	"socket.io":{
 		"port":3001
+	},
+	"feedback":{
+		"title":"",
+		"link":""
 	}
 }
