@@ -1,3 +1,15 @@
+form {
+	margin: 5px;
+}
+
+.comments-form {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.comments-form textarea {
+	background-color: rgba(255, 255, 255, 0);
+}
+
 .button_to {
 	display: inline-block;
 }
