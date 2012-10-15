@@ -62,7 +62,10 @@ $(document).ready(function(){
 		}
 
 		$container.closest('.entities.thumbnails').masonry({
-			itemSelector: '.thumbnail'
+			itemSelector: '.thumbnail',
+			columnWidth: function columnWidth( containerWidth){
+				return containerWidth / 3;
+			}
 		});
 	});
 	$('body').on('submit','form.status',postForm);
