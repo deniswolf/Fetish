@@ -63,7 +63,7 @@ C.destroy = function(){
 				if (err) return handleError(err);
 				self.entity_id = entity_id;
 				var comment = data.comments.id(id).remove();
-				logger(self, 'delete comment: '+comment.text+' from '+ data.name);
+				logger(self, 'deleted comment: '+comment.text+' from '+ data.name);
 				data.save(function(err){
 					if (err) return handleError(err);
 					socketIoRoom.emit('updateEntity',entity_id);
