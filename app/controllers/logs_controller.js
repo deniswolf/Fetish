@@ -25,45 +25,8 @@ action.index = function() {
   });
 };
 
-action.show = function() {
-  var self = this,
-    id = self.param('id');
-    self.user = self.req.user;
-
-  if (id){
-    Model.findById(
-      id,
-      function(err, data){
-    if (err) console.log('Log: failed to show with req:',this.req);
-        self.log = data;
-        self.render();
-      }
-    );
-  } else {
-    self.render();
-  }
-};
-
 // Doers
 
-action.create = function() {
-  var self = this,
-    log = self.param('log');
-    self.user = self.req.user;
-
-
-  if (log){
-    Model.create(
-      log,
-      function(err, data){
-        if (err) console.log('Log: failed to create with req:',this.req);
-        self.res.send(200, data);
-      }
-    );
-  } else {
-    self.redirect('/');
-  }
-};
 
 action.destroy = function() {
   var self = this,
