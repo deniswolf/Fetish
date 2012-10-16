@@ -18,6 +18,7 @@ html("data-hostname"="#{hostname}")
 							div.span9.btn-group
 								a.btn.btn-primary(href='/')
 									i.icon-home
+								a.btn(href='/logs') Logs
 								if feedback && feedback.title && feedback.link
 									a.btn(href=feedback.link)=feedback.title
 								a.btn(href='/entities/new') New
