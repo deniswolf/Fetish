@@ -11,6 +11,7 @@ module.exports = function routes() {
 	this.resources('entities', function(){
 		this.resources('comments');
 	});
+	this.resources('logs');
 	this.match('/auth/login','passport#login');
 	this.match('/auth/callback','passport#callback');
 	this.match('/auth/logout','passport#logout');
