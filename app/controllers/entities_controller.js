@@ -5,7 +5,7 @@ var locomotive = require('locomotive'),
 	config = require('../../config/config.json'),
 	feedback = config.feedback,
 	hostname = config.hostname,
-	logger = ('../../lib/logger');
+	logger = require('../../lib/logger');
 
 var C = new Controller();
 
@@ -41,6 +41,7 @@ C.create = function(){
 			entity,
 			function(err){
 				if (err) return handleError(err);
+				logger(self, 'added entity: '+entity.name);
 				socketIoRoom.emit('updateAll',true);
 				self.redirect('/');
 			});
@@ -82,6 +83,7 @@ C.update = function(){
 			entity,
 			function(err){
 				if (err) return handleError(err);
+				logger(self, 'updated entity: '+entity.name);
 				socketIoRoom.emit('updateEntity',id);
 				self.redirect('/');
 			}
@@ -100,8 +102,9 @@ C.destroy = function(){
 	if (id){
 		Model.findByIdAndRemove(
 			id,
-			function(err){
+			function(err, entity){
 				if (err) return handleError(err);
+				logger(self, 'deleted entity: '+entity.name);
 				socketIoRoom.emit('updateAll',true);
 				self.redirect('/');
 			}
