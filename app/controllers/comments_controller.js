@@ -2,7 +2,7 @@ var locomotive = require('locomotive'),
 	Controller = locomotive.Controller,
 	Model = require('../models/entity_model'),
 	socketIoRoom = require('../sockets/entities_socket').room,
-	logger = ('../../lib/logger');
+	logger = require('../../lib/logger');
 
 var C = new Controller();
 
@@ -42,6 +42,8 @@ C.create = function(){
 
 			data.save(function(err){
 				if (err) return handleError(err);
+				console.log(logger);
+				logger(self, 'added comment: '+comment.text+' on '+ data.name);
 				socketIoRoom.emit('updateEntity',entity_id);
 				self.redirect('/entities/'+entity_id+'/comments');
 			});
@@ -60,7 +62,8 @@ C.destroy = function(){
 			function(err, data){
 				if (err) return handleError(err);
 				self.entity_id = entity_id;
-				self.comment = data.comments.id(id).remove();
+				var comment = data.comments.id(id).remove();
+				logger(self, 'delete comment: '+comment.text+' from '+ data.name);
 				data.save(function(err){
 					if (err) return handleError(err);
 					socketIoRoom.emit('updateEntity',entity_id);
