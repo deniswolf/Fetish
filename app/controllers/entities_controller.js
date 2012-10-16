@@ -4,7 +4,8 @@ var locomotive = require('locomotive'),
 	socketIoRoom = require('../sockets/entities_socket').room,
 	config = require('../../config/config.json'),
 	feedback = config.feedback,
-	hostname = config.hostname;
+	hostname = config.hostname,
+	logger = ('../../lib/logger');
 
 var C = new Controller();
 

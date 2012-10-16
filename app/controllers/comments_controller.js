@@ -1,7 +1,8 @@
 var locomotive = require('locomotive'),
 	Controller = locomotive.Controller,
 	Model = require('../models/entity_model'),
-	socketIoRoom = require('../sockets/entities_socket').room;
+	socketIoRoom = require('../sockets/entities_socket').room,
+	logger = ('../../lib/logger');
 
 var C = new Controller();
 
