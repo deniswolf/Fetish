@@ -1,2 +1,21 @@
-each log in logs
-	p=log
+extends ../layout.html
+
+block content
+	div.row-fluid
+			div.logs.thumbnails
+				each log in logs
+					div.log.thumbnail
+						div.caption
+							span.label.label-inverse
+								if log.user
+									=log.user.displayName
+								else
+									| anonymous
+							|@
+							strong
+								=log.ip
+							|:
+							span.text-info
+								=log.what
+							span.muted
+								|#{"     ["+log.when}]
