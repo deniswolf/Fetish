@@ -1,4 +1,7 @@
 var locomotive = require('locomotive'),
+    config = require('../../config/config.json'),
+    feedback = config.feedback,
+    hostname = config.hostname,
     Controller = locomotive.Controller,
     Model = require('../models/log_model');
 
@@ -9,6 +12,8 @@ var action = new Controller();
 action.index = function() {
   var self = this;
   self.user = self.req.user;
+  self.feedback = feedback;
+  self.hostname = hostname;
 
   Model.find(null,null, function(err, data){
     if (err) console.log('Log: failed to index with req:',this.req);
