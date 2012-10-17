@@ -15,9 +15,9 @@ action.index = function(){
 	self.feedback = feedback;
 	self.hostname = hostname;
 
-	Model.find(null,null,{sort:'name'},function(err, data){
+	Model.find(null,null,{sort:'name'},function(err, entities){
 		if (err) self.render();
-		self.entities = data;
+		self.entities = entities;
 		self.render();
 	});
 };
@@ -61,9 +61,9 @@ action.edit = function(){
 	if (id){
 		Model.findById(
 			id,
-			function(err, data){
+			function(err, entity){
 				if (err) return handleError(err);
-				self.entity = data;
+				self.entity = entity;
 				self.render();
 			});
 	} else {
@@ -74,16 +74,16 @@ action.edit = function(){
 action.update = function(){
 	var self = this,
 		id = self.param('id'),
-		entity = self.param('entity');
+		entity_update = self.param('entity');
 		self.user = self.req.user;
 
 	if (id){
 		Model.findByIdAndUpdate(
 			id,
-			entity,
-			function(err){
+			entity_update,
+			function(err, entity){
 				if (err) return handleError(err);
-				logger(self, 'updated entity: '+entity.name);
+				logger(self, 'updated entity: '+entity.name+' with '+JSON.stringify(entity_update));
 				socketIoRoom.emit('updateEntity',id);
 				self.redirect('/');
 			}
