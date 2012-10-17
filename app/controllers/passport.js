@@ -2,9 +2,9 @@ var locomotive = require('locomotive'),
 	Controller = locomotive.Controller,
 	passport   = require('passport');
 
-var C = new Controller();
+var action = new Controller();
 
-C.login = function passportLogin(){
+action.login = function passportLogin(){
 	passport.authenticate('google',
 		{
 			scope: ['https://www.googleapis.com/auth/userinfo.profile',
@@ -12,15 +12,15 @@ C.login = function passportLogin(){
 		})(this.__req, this.__res, this.__next);
 };
 
-C.logout = function passportLogout(){
+action.logout = function passportLogout(){
 	this.req.logout();
 	this.redirect('/');
 };
 
-C.callback = function passportCallback(){
+action.callback = function passportCallback(){
 	passport.authenticate('google',
 		{ failureRedirect: '/auth/login',
 			successRedirect: '/'})(this.__req, this.__res, this.__next);
 };
 
-module.exports = C;
+module.exports = action;

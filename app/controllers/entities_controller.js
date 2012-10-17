@@ -7,9 +7,9 @@ var locomotive = require('locomotive'),
 	hostname = config.hostname,
 	logger = require('../../lib/logger');
 
-var C = new Controller();
+var action = new Controller();
 
-C.index = function(){
+action.index = function(){
 	var self = this;
 	self.user = self.req.user;
 	self.feedback = feedback;
@@ -22,7 +22,7 @@ C.index = function(){
 	});
 };
 
-C.new = function(){
+action.new = function(){
 	var self = this;
 	self.user = self.req.user;
 	self.feedback = feedback;
@@ -31,7 +31,7 @@ C.new = function(){
 	self.render();
 };
 
-C.create = function(){
+action.create = function(){
 	var self = this,
 		entity = self.param('entity');
 		self.user = self.req.user;
@@ -50,7 +50,7 @@ C.create = function(){
 	}
 };
 
-C.edit = function(){
+action.edit = function(){
 	var self = this,
 		id = self.param('id');
 		self.user = self.req.user;
@@ -71,7 +71,7 @@ C.edit = function(){
 	}
 };
 
-C.update = function(){
+action.update = function(){
 	var self = this,
 		id = self.param('id'),
 		entity = self.param('entity');
@@ -94,7 +94,7 @@ C.update = function(){
 	}
 };
 
-C.destroy = function(){
+action.destroy = function(){
 	var self = this,
 		id = self.param('id');
 		self.user = self.req.user;
@@ -115,7 +115,7 @@ C.destroy = function(){
 	}
 };
 
-C.show = function(){
+action.show = function(){
 	var self = this,
 		id = self.param('id');
 		self.user = self.req.user;
@@ -134,4 +134,4 @@ C.show = function(){
 };
 
 
-module.exports = C;
+module.exports = action;

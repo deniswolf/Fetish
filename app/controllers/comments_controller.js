@@ -4,9 +4,9 @@ var locomotive = require('locomotive'),
 	socketIoRoom = require('../sockets/entities_socket').room,
 	logger = require('../../lib/logger');
 
-var C = new Controller();
+var action = new Controller();
 
-C.index = function(){
+action.index = function(){
 	var self = this,
 		entity_id = self.param('entity_id');
 
@@ -26,7 +26,7 @@ C.index = function(){
 	);
 };
 
-C.create = function(){
+action.create = function(){
 	var self = this,
 		entity_id = self.param('entity_id'),
 		comment = self.param('comment'),
@@ -51,7 +51,7 @@ C.create = function(){
 	);
 };
 
-C.destroy = function(){
+action.destroy = function(){
 	var self = this,
 		entity_id = self.param('entity_id'),
 		id = self.param('id');
@@ -76,4 +76,4 @@ C.destroy = function(){
 	}
 };
 
-module.exports = C;
+module.exports = action;
