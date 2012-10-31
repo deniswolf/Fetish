@@ -14,7 +14,7 @@ function EntityModel (){
 	self.link = ko.observable(String);
 	self.comments = ko.observableArray([]);
 
-	self.addComment = function(params){
+	self.publishComment = function(params){
 		var comment = new CommentModel(),
 			author = params.author;
 
@@ -30,7 +30,7 @@ function ViewModel(){
 
 	self.entities = ko.observableArray([]);
 
-	self.addEntity = function(params){
+	self.publishEntity = function(params){
 		var entity = new EntityModel();
 		entity.name(params.name);
 		entity.description(params.description);
@@ -38,7 +38,7 @@ function ViewModel(){
 		entity.link(params.link);
 		entity.comments([]);
 
-		params.comments.map(entity.addComment);
+		params.comments.map(entity.publishComment);
 
 		self.entities.push(entity);
 	};
