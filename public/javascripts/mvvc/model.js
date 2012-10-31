@@ -8,6 +8,7 @@ function CommentModel (){
 function EntityModel (){
 	var self = this;
 
+	self.id = ko.observable(String);
 	self.name = ko.observable(String);
 	self.description = ko.observable(String);
 	self.status = ko.observable(String);
@@ -32,6 +33,7 @@ function ViewModel(){
 
 	self.publishEntity = function(params){
 		var entity = new EntityModel();
+		entity.id = params._id;
 		entity.name(params.name);
 		entity.description(params.description);
 		entity.status(params.status);

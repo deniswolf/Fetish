@@ -4,27 +4,29 @@
 		'/javascripts/mvvc/model.js',
 		function(){
 
-$hostname = $('html').attr('data-hostname');
-
-
 $(document).ready(function(){
-var ioDispatcher = io.connect('http://'+$hostname+':3001/entities');
 
-var dispatcher = $({});
+$hostname = $('html').attr('data-hostname');
+var ioDispatcher = io.connect('http://'+$hostname+':3001/entities');
 
 viewModel = new ViewModel();
 
 
-
 ko.applyBindings(viewModel);
 
-ioDispatcher.on('publishAll', function (entities) {
+ioDispatcher
+	.on('publishAll', function (entities) {
+		viewModel.entities([]);
+		entities.map(viewModel.publishEntity);
+	})
+	.on('updateEnity', function (id, entity) {
 		viewModel.entities([]);
 		entities.map(viewModel.publishEntity);
 	});
+
+
+
 });
-
-
 
 
 
