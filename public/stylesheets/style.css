@@ -1,4 +1,6 @@
 .entities {
+   -ms-column-count: 3;
+   -ms-column-gap: 20px;
    -moz-column-count: 3;
    -moz-column-gap: 20px;
    -webkit-column-count: 3;
