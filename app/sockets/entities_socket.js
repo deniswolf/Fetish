@@ -1,7 +1,15 @@
+var Model = require('../models/entity_model');
+
 exports.init = function initEntitiesSocket (io) {
-	exports.room = io;
-	io.on('connection',function(socket){
+	var room = io;
 
+	room.on('connection',function(socket){
+		Model.find(null,null,{sort:'name'},function(err, entities){
+			if (err) return;
+			socket.emit('publishAll', entities);
+		});
 	});
-};
 
+
+	exports.room = room;
+};

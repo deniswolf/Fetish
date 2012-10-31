@@ -18,14 +18,9 @@ viewModel = new ViewModel();
 
 ko.applyBindings(viewModel);
 
-ioDispatcher.on('connect', function (socket) {
-	$.getJSON('/mvvc.json')
-		.success(function(data){
-			var entities = data;
-			entities.forEach(function(entity){
-				viewModel.publishEntity(entity);
-			});
-		});
+ioDispatcher.on('publishAll', function (entities) {
+		viewModel.entities([]);
+		entities.map(viewModel.publishEntity);
 	});
 });
 

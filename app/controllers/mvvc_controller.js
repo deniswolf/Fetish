@@ -15,16 +15,12 @@ action.show = function(){
 	self.feedback = feedback;
 	self.hostname = hostname;
 
-	Model.find(null,null,{sort:'name'},function(err, entities){
-		if (err) self.render();
-		self.entities = entities;
-		self.respond({
-			'html':true,
-			'json':true
-		});
+	self.respond({
+		'html':true,
+		'json':true
 	});
-};
 
+};
 
 
 module.exports = action;
