@@ -2,7 +2,7 @@ extends ../layout.html
 
 block content
 
-	#entities(data-bind="template: { name: 'entityTemplate',  foreach: entities}")
+	ul.media-list.entities#entities(data-bind="template: { name: 'entityTemplate',  foreach: entities}")
 
 	script(src='/javascripts/lib/knockout.js')
 	script(src='/javascripts/mvvc.js')

@@ -1,5 +1,7 @@
 script(id="entityTemplate", type="text/html")
-	span.label.label-info(data-bind="text: name")
-	span.label.label-inverse(data-bind="text: status")
-	span.label(data-bind="text: description")
-	div.comments(data-bind="template: { name: 'commentTemplate',  foreach: comments}")
+	li.media.entity
+		.media-body
+			h2.media-heading(data-bind="text: name")
+			span.pull-right.label.label-inverse(data-bind="text: status")
+			p(data-bind="text: description")
+			div.comments(data-bind="template: { name: 'commentTemplate',  foreach: comments}")
