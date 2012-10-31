@@ -20,9 +20,7 @@ ioDispatcher
 		entities.map(viewModel.publishEntity);
 	})
 	.on('removeEntity', function (id) {
-		viewModel.entities.remove(function(ent){
-			return ent.id === id;
-		});
+		viewModel.entities.removeEntity(id);
 	});
 
 

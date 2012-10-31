@@ -1,5 +1,6 @@
 function CommentModel (){
 	var self = this;
+	self.id = ko.observable(String);
 	self.text = ko.observable(String);
 	self.author = ko.observable(String);
 	self.created = ko.observable(String);
@@ -19,6 +20,7 @@ function EntityModel (){
 		var comment = new CommentModel(),
 			author = params.author;
 
+		comment.id(params._id);
 		comment.author(author ? author.name : undefined);
 		comment.text(params.text);
 		comment.created(params.created);
@@ -43,5 +45,11 @@ function ViewModel(){
 		params.comments.map(entity.publishComment);
 
 		self.entities.push(entity);
+	};
+
+	self.removeEntity = function(id){
+		self.entities.remove(function(ent){
+			return ent.id === id;
+		});
 	};
 }
