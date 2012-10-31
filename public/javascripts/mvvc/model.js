@@ -26,6 +26,12 @@ function EntityModel (){
 		comment.created(params.created);
 		self.comments.push(comment);
 	};
+
+	self.removeComment = function(id){
+		self.entities.remove(function(ent){
+			return ent.id === id;
+		});
+	};
 }
 
 function ViewModel(){
