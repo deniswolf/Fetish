@@ -15,11 +15,12 @@ function EntityModel (){
 	self.comments = ko.observableArray([]);
 
 	self.addComment = function(params){
-		var comment = new CommentModel();
-		comment.text(params.text);
-		comment.author(params.author);
-		comment.created(params.created);
+		var comment = new CommentModel(),
+			author = params.author;
 
+		comment.author(author ? author.name : undefined);
+		comment.text(params.text);
+		comment.created(params.created);
 		self.comments.push(comment);
 	};
 }
