@@ -18,7 +18,10 @@ action.show = function(){
 	Model.find(null,null,{sort:'name'},function(err, entities){
 		if (err) self.render();
 		self.entities = entities;
-		self.render();
+		self.respond({
+			'html':true,
+			'json':true
+		});
 	});
 };
 
