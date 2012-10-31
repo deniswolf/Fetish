@@ -108,7 +108,7 @@ action.destroy = function(){
 			function(err, entity){
 				if (err) return handleError(err);
 				logger(self, 'deleted entity: '+entity.name);
-				socketIoRoom.emit('updateAll',true);
+				socketIoRoom.emit('removeEntity',id);
 				self.redirect('/');
 			}
 			);
