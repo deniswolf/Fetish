@@ -8,7 +8,7 @@
 
 module.exports = function routes() {
 	this.resource('mvvc');
-	this.root('mvvc#index');
+	this.root('mvvc#show');
 	// this.root('entities#index');
 	this.resources('entities', function(){
 		this.resources('comments');

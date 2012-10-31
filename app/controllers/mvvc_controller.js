@@ -9,7 +9,7 @@ var locomotive = require('locomotive'),
 
 var action = new Controller();
 
-action.index = function(){
+action.show = function(){
 	var self = this;
 	self.user = self.req.user;
 	self.feedback = feedback;
@@ -21,3 +21,7 @@ action.index = function(){
 		self.render();
 	});
 };
+
+
+
+module.exports = action;
