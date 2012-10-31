@@ -1,4 +1,5 @@
 script(id="entityTemplate", type="text/html")
 	span.label.label-info(data-bind="text: name")
-	|:
-	span.label.label-info(data-bind="text: status")
+	span.label.label-inverse(data-bind="text: status")
+	span.label(data-bind="text: description")
+	div.comments(data-bind="template: { name: 'commentTemplate',  foreach: comments}")
