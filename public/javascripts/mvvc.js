@@ -10,12 +10,16 @@ $(document).ready(function(){
 
 var dispatcher = $({});
 
-var viewModel = new ViewModel();
+viewModel = new ViewModel();
 
 
 $.getJSON('/mvvc.json')
 	.success(function(data){
 		console.log('JSON data:',data);
+		var entities = data;
+		entities.forEach(function(entity){
+			viewModel.addEntity(entity);
+		});
 	});
 
 // dispatcher.on('data', function displayData (e, data) {
