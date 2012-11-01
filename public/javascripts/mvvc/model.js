@@ -27,10 +27,12 @@ function EntityModel (){
 		self.comments.push(comment);
 	};
 
-	self.removeComment = function(id){
-		self.entities.remove(function(ent){
-			return ent.id === id;
-		});
+	self.removeComment = function(koComment){
+		var comment = koComment.$data,
+			id = comment.id(),
+			entity = koComment.$parent;
+		console.log(comment, id, entity);
+		entity.comments.remove(comment);
 	};
 }
 

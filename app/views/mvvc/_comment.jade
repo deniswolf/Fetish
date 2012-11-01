@@ -1,5 +1,6 @@
 script(id="commentTemplate", type="text/html")
 	div.comment
+		button.removeComment.btn.btn-danger.btn-mini delete
 		span.label.label-info(data-bind="text: author, visible: author")
 		span.label.label-success(data-bind="text: created")
 		span(data-bind="text: text")

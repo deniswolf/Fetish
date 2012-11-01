@@ -7,7 +7,7 @@
 $(document).ready(function(){
 
 $hostname = $('html').attr('data-hostname');
-var ioDispatcher = io.connect('http://'+$hostname+':3001/entities');
+ioDispatcher = io.connect('http://'+$hostname+':3001/entities');
 
 viewModel = new ViewModel();
 
@@ -21,12 +21,22 @@ ioDispatcher
 	})
 	.on('removeEntity', function (id) {
 		viewModel.entities.removeEntity(id);
+	})
+	.on('removeComment', function(x){
+		console.log('nya');
+		console.log(arguments);
 	});
 
 
 
 });
 
+$('.entities').on('click','.removeComment',function(e){
+	context = ko.contextFor(this);
+	// ioDispatcher.emit('removeComment', context);
+
+	// context.$parent.removeComment(context);
+});
 
 
 
