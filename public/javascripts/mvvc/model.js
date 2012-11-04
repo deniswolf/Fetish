@@ -4,6 +4,9 @@ function CommentModel (){
 	self.text = ko.observable(String);
 	self.author = ko.observable(String);
 	self.created = ko.observable(String);
+	self.formattedCreated = ko.computed(function(){
+		return moment(self.created()).format('LLL');
+	});
 }
 
 function EntityModel (){
