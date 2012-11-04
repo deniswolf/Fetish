@@ -23,7 +23,6 @@ ioDispatcher
 		viewModel.entities.removeEntity(id);
 	})
 	.on('removeComment', function(entityId, id){
-		console.log('nya');
 		var entity = viewModel.entities().filter(function(e){
 			return e.id === entityId;
 		})[0];
@@ -43,8 +42,6 @@ $('.entities').on('click','.removeComment',function(e){
 		entityId = context.$parent.id;
 
 	ioDispatcher.emit('serverRemoveComment', entityId, id);
-
-	// context.$parent.removeComment(context);
 });
 
 

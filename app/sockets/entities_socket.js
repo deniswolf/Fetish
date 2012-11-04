@@ -12,15 +12,14 @@ exports.init = function initEntitiesSocket (io) {
 
 		socket
 			.on('serverRemoveComment',function(entityId, id){
-
 				Model.findById(
 					entityId,
 					function(err, entity){
 						if (err) return console.log(err);
 
 						var comment = entity.comments.id(id).remove();
-
 						if(! comment) return;
+
 						// logger(self, 'deleted comment: '+comment.text+' from '+ entity.name);
 						entity.save(function(err){
 							if (err) return console.log(err);
