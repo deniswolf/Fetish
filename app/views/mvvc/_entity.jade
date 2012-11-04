@@ -4,7 +4,7 @@ script(id="entityTemplate", type="text/html")
 			h2.media-heading(data-bind="text: name")
 			span.pull-right.label.label-inverse(data-bind="text: status")
 			p(data-bind="text: description")
-			div.comments(data-bind="template: { name: 'commentTemplate',  foreach: comments}")
+			div.comments(data-bind="template: { name: 'commentTemplate',  foreach: sortedComments}")
 			.newComment
 				textarea.text
 				a.add.btn.btn-mini.btn-success add

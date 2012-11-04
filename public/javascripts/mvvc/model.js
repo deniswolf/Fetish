@@ -15,6 +15,18 @@ function EntityModel (){
 	self.status = ko.observable(String);
 	self.link = ko.observable(String);
 	self.comments = ko.observableArray([]);
+	self.sortedComments = ko.computed({
+		read: function(){
+			return self.comments().sort(
+				function(a, b){
+					var left = new Date(a.created()), right = new Date(b.created());
+					return right - left;
+				});
+		},
+		write:function(){
+			return;
+		}
+	});
 
 	self.addComment = function(params){
 		var comment = new CommentModel(),
