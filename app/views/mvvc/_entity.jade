@@ -5,3 +5,6 @@ script(id="entityTemplate", type="text/html")
 			span.pull-right.label.label-inverse(data-bind="text: status")
 			p(data-bind="text: description")
 			div.comments(data-bind="template: { name: 'commentTemplate',  foreach: comments}")
+			.newComment
+				textarea.text
+				a.add.btn.btn-mini.btn-success add

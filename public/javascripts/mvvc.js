@@ -22,6 +22,13 @@ ioDispatcher
 	.on('removeEntity', function (id) {
 		viewModel.entities.removeEntity(id);
 	})
+	.on('addComment', function (entityId, comment) {
+		var entity = viewModel.entities().filter(function(e){
+			return e.id === entityId;
+		})[0];
+		if (! entity) return;
+		entity.addComment(comment);
+	})
 	.on('removeComment', function(entityId, id){
 		var entity = viewModel.entities().filter(function(e){
 			return e.id === entityId;
@@ -42,6 +49,13 @@ $('.entities').on('click','.removeComment',function(e){
 		entityId = context.$parent.id;
 
 	ioDispatcher.emit('serverRemoveComment', entityId, id);
+});
+$('.entities').on('click','.newComment .add',function(e){
+	var entity = ko.contextFor(this),
+		entityId = entity.$data.id,
+		text = $(this).closest('.newComment').find('.text').val();
+
+	ioDispatcher.emit('serverAddComment', entityId, text);
 });
 
 

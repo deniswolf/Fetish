@@ -26,6 +26,23 @@ exports.init = function initEntitiesSocket (io) {
 							room.emit('removeComment',entityId, id);
 						});
 				});
+			})
+			.on('serverAddComment',function(entityId, text){
+				Model.findById(
+					entityId,
+					function(err, entity){
+						if (err) return console.log(err);
+						entity.comments.unshift({text: text});
+
+						entity.save(function(err, entity){
+							var comment = entity.comments[0];
+							if (err) return handleError(err);
+
+							// logger(self, 'added comment: '+comment.text+' on '+ entity.name);
+							room.emit('addComment',entityId,comment);
+						});
+					}
+				);
 			});
 
 	});

@@ -16,7 +16,7 @@ function EntityModel (){
 	self.link = ko.observable(String);
 	self.comments = ko.observableArray([]);
 
-	self.publishComment = function(params){
+	self.addComment = function(params){
 		var comment = new CommentModel(),
 			author = params.author;
 
@@ -24,14 +24,13 @@ function EntityModel (){
 		comment.author(author ? author.name : undefined);
 		comment.text(params.text);
 		comment.created(params.created);
-		self.comments.push(comment);
+		self.comments.unshift(comment);
 	};
 
 	self.removeComment = function(koComment){
 		var comment = koComment.$data,
 			id = comment.id(),
 			entity = koComment.$parent;
-		console.log(comment, id, entity);
 		entity.comments.remove(comment);
 	};
 }
@@ -50,7 +49,7 @@ function ViewModel(){
 		entity.link(params.link);
 		entity.comments([]);
 
-		params.comments.map(entity.publishComment);
+		params.comments.map(entity.addComment);
 
 		self.entities.push(entity);
 	};
