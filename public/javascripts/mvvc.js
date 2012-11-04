@@ -22,9 +22,15 @@ ioDispatcher
 	.on('removeEntity', function (id) {
 		viewModel.entities.removeEntity(id);
 	})
-	.on('removeComment', function(x){
+	.on('removeComment', function(entityId, id){
 		console.log('nya');
-		console.log(arguments);
+		var entity = viewModel.entities().filter(function(e){
+			return e.id === entityId;
+		})[0];
+		if (! entity) return;
+		entity.comments.remove(function(comment){
+			return comment.id() === id;
+		});
 	});
 
 
@@ -32,8 +38,11 @@ ioDispatcher
 });
 
 $('.entities').on('click','.removeComment',function(e){
-	context = ko.contextFor(this);
-	// ioDispatcher.emit('removeComment', context);
+	var context = ko.contextFor(this),
+		id = context.$data.id(),
+		entityId = context.$parent.id;
+
+	ioDispatcher.emit('serverRemoveComment', entityId, id);
 
 	// context.$parent.removeComment(context);
 });
