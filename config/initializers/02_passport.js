@@ -2,6 +2,8 @@ var passport = require('passport'),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
     config = require('../config.json').auth;
 
+if ((! config.clientID) || (! config.clientSecret)) return;
+
 passport.use(
   new GoogleStrategy({
     clientID: config.clientID,
