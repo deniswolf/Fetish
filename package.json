@@ -1,16 +1,16 @@
 {
-  "name": "app-name",
-  "version": "0.0.1",
+  "name": "fetish",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "locomotive": "0.3.x",
     "express": "3.x.x",
     "connect-powered-by": "0.1.x",
     "jade": "*",
-    "mongoose": "*",
+    "mongoose": "3.x.x",
     "passport": "*",
     "passport-google-oauth":"*",
-    "session-mongoose":"*",
+    "session-mongoose":"0.2.x",
     "socket.io":"*"
   }
 }
